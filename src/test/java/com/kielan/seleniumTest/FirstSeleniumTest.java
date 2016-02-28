@@ -21,6 +21,7 @@ public class FirstSeleniumTest {
         WebDriver driver = new ChromeDriver();
         driver.navigate().to("http://localhost:4567");
         assertTrue(driver.getTitle().startsWith("Free"));
+        System.out.println("działa?");
         WebElement email = driver.findElement(By.id("email"));
         email.sendKeys("23");
         WebElement pass = driver.findElement(By.id("pwd"));
@@ -29,8 +30,8 @@ public class FirstSeleniumTest {
         driver.findElement(By.id("zalogujButton")).click();
         String napis = driver.findElement(By.id("witaj")).getText();
         System.out.println(napis+" ciekawe");
-        //driver.close();
-       //driver.quit();
+        driver.close();
+        driver.quit();
     }
 
     public void testDownloadLinkExists() {

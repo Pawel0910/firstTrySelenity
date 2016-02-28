@@ -27,13 +27,18 @@ public class WorkshopTest {
         //wybierzKraj.click();
         WebElement startDate= driver.findElement(By.id("flightmanagerFlightsFormOutboundDateDisplay"));
         startDate.sendKeys("");
-        WebElement pickStartDate=driver.findElement(By.xpath("/*//*[@aria-label='Mo, 29.02.2016']"));
+        WebElement pickStartDate=driver.findElement(By.xpath("/*//*[@aria-label='Mo, 29.02.2016' or @aria-label='Pn, 29.02.2016']" ));
         pickStartDate.click();
 
-        WebElement pickReturnDate=driver.findElement(By.xpath("/*//*[@aria-label='We, 02.03.2016']"));
+        WebElement pickReturnDate=driver.findElement(By.xpath("/*//*[@aria-label='We, 02.03.2016' or @aria-label='Śr, 02.03.2016']"));
         pickReturnDate.click();
         startPlaceFlight.submit();
 
+        //WebElement pierwszaCena=driver.findElement(By.xpath("/*//*[@data-reactid='.4.2.$AvailabilityRow1.3.3']"));
+        String napis=driver.findElement(By.xpath("/*//*[@data-reactid='.4.2.$AvailabilityRow1.3.3']")).getText();
+        double cena=Double.parseDouble(driver.findElement(By.xpath("/*//*[@data-reactid='.4.2.$AvailabilityRow1.3.3']")).getText().substring(3,9).replace(",","."));
+        System.out.println("naspi: "+napis);
+        System.out.println("CENA: "+cena);
 
 
        // WebElement startDateInput = driver.findElement(By.cssSelector("Moje rezerwacje"));
